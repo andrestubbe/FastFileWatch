@@ -28,14 +28,14 @@ package fastfilewatch;
 public class FastFileWatch {
     static {
         try {
-            // Try System.loadLibrary first (default)
-            System.loadLibrary("fastfilewatch");
+            // Try absolute path first (relative to user.dir)
+            String userDir = System.getProperty("user.dir");
+            String dllPath = userDir + "\\fastfilewatch.dll";
+            System.load(dllPath);
         } catch (UnsatisfiedLinkError e1) {
             try {
-                // Fallback to absolute path (relative to user.dir)
-                String userDir = System.getProperty("user.dir");
-                String dllPath = userDir + "\\build\\fastfilewatch.dll";
-                System.load(dllPath);
+                // Fallback to System.loadLibrary
+                System.loadLibrary("fastfilewatch");
             } catch (UnsatisfiedLinkError e2) {
                 System.err.println("Failed to load fastfilewatch.dll: " + e2.getMessage());
                 throw e2;

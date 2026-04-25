@@ -19,25 +19,7 @@ jmethodID g_onFileModified = nullptr;
 jmethodID g_onFileDeleted = nullptr;
 jmethodID g_onFileRenamed = nullptr;
 
-// USN Journal structures
-#define USN_RECORD_MAGIC 0x2D7D7D2D
-
-typedef struct {
-    DWORD RecordLength;
-    WORD MajorVersion;
-    WORD MinorVersion;
-    DWORD FileReferenceNumber;
-    DWORD ParentFileReferenceNumber;
-    USN Usn;
-    LARGE_INTEGER TimeStamp;
-    DWORD Reason;
-    DWORD SourceInfo;
-    DWORD SecurityId;
-    DWORD FileAttributes;
-    WORD FileNameLength;
-    WORD FileNameOffset;
-    WCHAR FileName[1];
-} USN_RECORD_V2;
+// USN Journal structures - use Windows SDK definitions
 
 // Convert wide string to UTF-8
 std::string WideToUTF8(const std::wstring& wstr) {
@@ -146,7 +128,7 @@ void MonitorThread(std::vector<std::wstring> paths) {
 }
 
 // JNI: Check if USN Journal is available
-JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJournalAvailable(JNIEnv* env, jclass) {
+extern "C" JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJournalAvailable(JNIEnv* env, jclass) {
     HANDLE hVolume = CreateFileW(
         L"C:\\",
         GENERIC_READ,
@@ -179,7 +161,7 @@ JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJournalAvailabl
 }
 
 // JNI: Start monitoring
-JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_start(JNIEnv* env, jclass, jobjectArray jpaths, jobject jcallback) {
+extern "C" JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_start(JNIEnv* env, jclass, jobjectArray jpaths, jobject jcallback) {
     if (g_running) {
         return;
     }
@@ -223,7 +205,7 @@ JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_start(JNIEnv* env, jclas
 }
 
 // JNI: Stop monitoring
-JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_stop(JNIEnv* env, jclass) {
+extern "C" JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_stop(JNIEnv* env, jclass) {
     if (!g_running) {
         return;
     }
