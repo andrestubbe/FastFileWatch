@@ -89,6 +89,23 @@ public class Example {
 
 ## Installation
 
+### Prerequisites (Windows)
+
+FastFileWatch requires the USN Journal to be enabled on the NTFS volumes you want to monitor. This requires **Administrator privileges**.
+
+**Enable USN Journal on C: drive:**
+```powershell
+# Run as Administrator
+fsutil usn createjournal C: 64000 4096
+```
+
+**Check USN Journal status:**
+```powershell
+fsutil usn queryjournal C:
+```
+
+**Note:** USN Journal is a Windows NTFS feature that tracks file system changes. It requires admin privileges to enable and is not enabled by default on most systems.
+
 ### Maven (JitPack)
 
 ```xml
