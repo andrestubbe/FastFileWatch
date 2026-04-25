@@ -61,6 +61,12 @@ public class FastFileWatch {
      */
     public static native boolean isUSNJournalAvailable();
     
+    /**
+     * Gets the USN Journal status message.
+     * @return Status message describing USN Journal availability
+     */
+    public static native String getUSNJournalStatus();
+    
     public static void main(String[] args) {
         System.out.println("=== FastFileWatch ===");
         System.out.println("FastFileWatch - USN Journal-based live file monitoring");

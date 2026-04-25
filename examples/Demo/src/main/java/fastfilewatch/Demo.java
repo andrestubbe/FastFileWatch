@@ -9,15 +9,16 @@ import fastfilewatch.ChangeCallback;
 public class Demo {
     public static void main(String[] args) {
         System.out.println("=== FastFileWatch Demo ===");
+        System.out.println("USN Journal Status: " + FastFileWatch.getUSNJournalStatus());
+        System.out.println();
         
         // Check if USN Journal is available
         if (!FastFileWatch.isUSNJournalAvailable()) {
-            System.out.println("USN Journal not available on this system");
+            System.out.println("USN Journal not available - monitoring will not receive events");
             System.out.println("Enable it with: fsutil usn createjournal C: 64000 4096");
-            return;
+            System.out.println();
         }
         
-        System.out.println("USN Journal is available");
         System.out.println("Starting file monitoring on C:\\");
         System.out.println("Press CTRL+C to stop");
         System.out.println();

@@ -160,6 +160,48 @@ extern "C" JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJour
     return result ? JNI_TRUE : JNI_FALSE;
 }
 
+// JNI: Get USN Journal status message
+extern "C" JNIEXPORT jstring JNICALL Java_fastfilewatch_FastFileWatch_getUSNJournalStatus(JNIEnv* env, jclass) {
+    HANDLE hVolume = CreateFileW(
+        L"C:\\",
+        GENERIC_READ,
+        FILE_SHARE_READ | FILE_SHARE_WRITE,
+        NULL,
+        OPEN_EXISTING,
+        0,
+        NULL
+    );
+    
+    if (hVolume == INVALID_HANDLE_VALUE) {
+        return env->NewStringUTF("ERROR: Cannot open C: volume");
+    }
+    
+    USN_JOURNAL_DATA journalData;
+    DWORD bytesReturned;
+    BOOL result = DeviceIoControl(
+        hVolume,
+        FSCTL_QUERY_USN_JOURNAL,
+        NULL,
+        0,
+        &journalData,
+        sizeof(journalData),
+        &bytesReturned,
+        NULL
+    );
+    
+    CloseHandle(hVolume);
+    
+    if (result) {
+        char status[256];
+        sprintf_s(status, sizeof(status), 
+            "USN Journal ACTIVE - USN: %llu, Size: %llu bytes", 
+            journalData.NextUsn, journalData.UsnJournalID);
+        return env->NewStringUTF(status);
+    } else {
+        return env->NewStringUTF("USN Journal NOT ACTIVE - Enable with: fsutil usn createjournal C: 64000 4096");
+    }
+}
+
 // JNI: Start monitoring
 extern "C" JNIEXPORT void JNICALL Java_fastfilewatch_FastFileWatch_start(JNIEnv* env, jclass, jobjectArray jpaths, jobject jcallback) {
     if (g_running) {
