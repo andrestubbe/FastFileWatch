@@ -130,7 +130,7 @@ void MonitorThread(std::vector<std::wstring> paths) {
 // JNI: Check if USN Journal is available
 extern "C" JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJournalAvailable(JNIEnv* env, jclass) {
     HANDLE hVolume = CreateFileW(
-        L"C:\\",
+        L"\\\\.\\C:",
         GENERIC_READ,
         FILE_SHARE_READ | FILE_SHARE_WRITE,
         NULL,
@@ -163,7 +163,7 @@ extern "C" JNIEXPORT jboolean JNICALL Java_fastfilewatch_FastFileWatch_isUSNJour
 // JNI: Get USN Journal status message
 extern "C" JNIEXPORT jstring JNICALL Java_fastfilewatch_FastFileWatch_getUSNJournalStatus(JNIEnv* env, jclass) {
     HANDLE hVolume = CreateFileW(
-        L"C:\\",
+        L"\\\\.\\C:",
         GENERIC_READ,
         FILE_SHARE_READ | FILE_SHARE_WRITE,
         NULL,
@@ -173,7 +173,7 @@ extern "C" JNIEXPORT jstring JNICALL Java_fastfilewatch_FastFileWatch_getUSNJour
     );
     
     if (hVolume == INVALID_HANDLE_VALUE) {
-        return env->NewStringUTF("ERROR: Cannot open C: volume");
+        return env->NewStringUTF("ERROR: Cannot open C: volume (need admin privileges)");
     }
     
     USN_JOURNAL_DATA journalData;
