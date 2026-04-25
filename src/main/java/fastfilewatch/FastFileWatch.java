@@ -1,13 +1,15 @@
 package fastfilewatch;
 
+import fastfilesearch.FileUpdate;
+
 /**
- * FastFileWatch - Uses USN Journal to keep the index live-updated with zero rescans.
+ * WatchService - USN Journal-based file monitoring service.
  * 
- * <p>FastFileWatch is the third module in the FastJava file search engine trilogy:
+ * <p>WatchService is the third module in the FastJava file search engine trilogy:
  * <ul>
- *   <li>FastFileIndex - Full filesystem scan → produces a binary, mmap-capable index of all files</li>
- *   <li>FastFileSearch - Builds Prefix Trie, N-Gram index, Exact Match map, and Ranking engine on top of the index</li>
- *   <li>FastFileWatch - Uses USN Journal to keep the index + search structures live-updated with zero rescans</li>
+ *   <li>FileIndex - Full filesystem scan → produces a binary, mmap-capable index of all files</li>
+ *   <li>SearchEngine - Builds Prefix Trie, N-Gram index, Exact Match map, and Ranking engine on top of the index</li>
+ *   <li>WatchService - Uses USN Journal to keep the index + search structures live-updated with zero rescans</li>
  * </ul>
  * 
  * <p>This architecture is similar to Everything, Spotlight, VSCode, and fsearch but modular and embeddable.
@@ -25,51 +27,55 @@ package fastfilewatch;
  * @since 1.0.0
  * @version 1.0.0
  */
-public class FastFileWatch {
+public final class WatchService {
     static {
         try {
-            // Try absolute path first (relative to user.dir)
-            String userDir = System.getProperty("user.dir");
-            String dllPath = userDir + "\\fastfilewatch.dll";
-            System.load(dllPath);
+            System.loadLibrary("fastcore");
         } catch (UnsatisfiedLinkError e1) {
             try {
-                // Fallback to System.loadLibrary
-                System.loadLibrary("fastfilewatch");
+                String userDir = System.getProperty("user.dir");
+                String dllPath = userDir + "\\build\\fastcore.dll";
+                System.load(dllPath);
             } catch (UnsatisfiedLinkError e2) {
-                System.err.println("Failed to load fastfilewatch.dll: " + e2.getMessage());
+                System.err.println("Failed to load fastcore.dll: " + e2.getMessage());
                 throw e2;
             }
         }
     }
-    
+
+    private final long nativeHandle;
+
+    private WatchService(long nativeHandle) {
+        this.nativeHandle = nativeHandle;
+    }
+
+    public long handle() {
+        return nativeHandle;
+    }
+
     /**
-     * Starts monitoring the specified paths for file system changes using USN Journal.
-     * @param paths Array of root directory paths to monitor
-     * @param callback Change callback interface
+     * Check if USN Journal is available for volume.
      */
-    public static native void start(String[] paths, ChangeCallback callback);
-    
+    public static native boolean isUSNAvailable(String volume);
+
     /**
-     * Stops monitoring and releases resources.
+     * Get USN Journal status for volume.
      */
-    public static native void stop();
-    
+    public static native String usnStatus(String volume);
+
     /**
-     * Checks if USN Journal is available on the system.
-     * @return true if USN Journal is available, false otherwise
+     * Start watching roots with callback.
      */
-    public static native boolean isUSNJournalAvailable();
-    
+    public static native WatchService start(String[] roots, WatchCallback callback);
+
     /**
-     * Gets the USN Journal status message.
-     * @return Status message describing USN Journal availability
+     * Stop watching.
      */
-    public static native String getUSNJournalStatus();
-    
+    public native void stop();
+
     public static void main(String[] args) {
-        System.out.println("=== FastFileWatch ===");
-        System.out.println("FastFileWatch - USN Journal-based live file monitoring");
+        System.out.println("=== WatchService ===");
+        System.out.println("WatchService - USN Journal-based live file monitoring");
         System.out.println("=== OK ===");
     }
 }

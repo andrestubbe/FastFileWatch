@@ -36,6 +36,8 @@
             <groupId>com.github.andrestubbe</groupId>
             <artifactId>fastfilewatch</artifactId>
             <version>v1.0.0</version>
+            <systemPath>${project.basedir}/../../target/fastfilewatch-v1.0.0.jar</systemPath>
+            <scope>system</scope>
         </dependency>
     </dependencies>
 
