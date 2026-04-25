@@ -1,4 +1,4 @@
-# FastFileWatch - High-performance native file system watcher with instant event delivery and minimal overhead [ALPHA].
+# FastFileWatch - Native file system watcher with instant event delivery [ALPHA].
 
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
