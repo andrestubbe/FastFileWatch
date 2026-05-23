@@ -1,16 +1,9 @@
 @echo off
-echo === FastFileWatch Benchmark ===
-echo.
-echo Building FastFileWatch...
-call mvn clean package -f pom.xml
-echo.
-echo Building Benchmark...
+echo ⚡ Building Main Project...
+call mvn clean package -DskipTests
+if %ERRORLEVEL% NEQ 0 ( pause & exit /b )
+echo 🚀 Running Hero Demo...
 cd examples\Benchmark
-call mvn clean package -f pom.xml
-echo.
-echo Running Benchmark...
-java --enable-native-access=ALL-UNNAMED -cp "target\fastfilewatch-benchmark-v1.0.0.jar;..\..\target\fastfilewatch-v1.0.0.jar" fastfilewatch.Benchmark
+call mvn compile exec:java -Dexec.mainClass=fastfilewatch.Benchmark
 cd ..\..
-echo.
-echo === Benchmark Complete ===
 pause
