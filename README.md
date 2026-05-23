@@ -1,4 +1,4 @@
-﻿# FastFileWatch â€” High-Performance Native File Monitoring for Java [v0.1.0]
+﻿# FastFileWatch — High-Performance Native File Monitoring for Java [v0.1.0]
 
 **A zero-latency file system monitoring module for the FastJava ecosystem. Real-time events for file creation, modification, and deletion via ReadDirectoryChangesW.**
 
@@ -17,10 +17,10 @@
 - [License](#license)
 
 ## Features
-- **âš¡ Instant Events**: Real-time notification via native Windows hooks.
-- **ðŸ”Ž Low Overhead**: Efficient monitoring without periodic polling.
-- **ðŸ“¦ Recursive Support**: High-performance monitoring of entire directory trees.
-- **ðŸš€ Raw Speed**: Built for real-time indexing and automation tools.
+- **⚡ Instant Events**: Real-time notification via native Windows hooks.
+- **🔎 Low Overhead**: Efficient monitoring without periodic polling.
+- **📦 Recursive Support**: High-performance monitoring of entire directory trees.
+- **🚀 Raw Speed**: Built for real-time indexing and automation tools.
 
 ## Installation
 
@@ -75,7 +75,7 @@ Download the latest JARs directly to add them to your classpath:
 
 
 ## License
-MIT License â€” See [LICENSE](LICENSE) for details.
+MIT License — See [LICENSE](LICENSE) for details.
 
 ---
-**Part of the FastJava Ecosystem** â€” *Making the JVM faster.*
+**Part of the FastJava Ecosystem** — *Making the JVM faster.*
