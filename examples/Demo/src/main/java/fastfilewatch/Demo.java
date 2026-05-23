@@ -1,19 +1,19 @@
 package fastfilewatch;
 
-import fastfilewatch.FastFileWatch;
-import fastfilewatch.ChangeCallback;
+import fastfilesearch.FileUpdate;
+import fastfilesearch.FileUpdateType;
 
 /**
  * Demo - Demonstrates USN Journal-based file monitoring.
  */
 public class Demo {
     public static void main(String[] args) {
-        System.out.println("=== FastFileWatch Demo ===");
-        System.out.println("USN Journal Status: " + FastFileWatch.getUSNJournalStatus());
+        System.out.println("=== WatchService Demo ===");
+        System.out.println("USN Journal Status: " + WatchService.usnStatus("C:"));
         System.out.println();
         
         // Check if USN Journal is available
-        if (!FastFileWatch.isUSNJournalAvailable()) {
+        if (!WatchService.isUSNAvailable("C:")) {
             System.out.println("USN Journal not available - monitoring will not receive events");
             System.out.println("Enable it with: fsutil usn createjournal C: 64000 4096");
             System.out.println();
@@ -24,26 +24,24 @@ public class Demo {
         System.out.println();
         
         // Start monitoring
-        String[] paths = { "C:\\" };
-        FastFileWatch.start(paths, new ChangeCallback() {
+        String[] roots = { "C:\\" };
+        WatchService service = WatchService.start(roots, new WatchCallback() {
             @Override
-            public void onFileCreated(String path) {
-                System.out.println("[CREATED] " + path);
-            }
-            
-            @Override
-            public void onFileModified(String path) {
-                System.out.println("[MODIFIED] " + path);
-            }
-            
-            @Override
-            public void onFileDeleted(String path) {
-                System.out.println("[DELETED] " + path);
-            }
-            
-            @Override
-            public void onFileRenamed(String oldPath, String newPath) {
-                System.out.println("[RENAMED] " + oldPath + " -> " + newPath);
+            public void onUpdate(FileUpdate update) {
+                switch (update.type()) {
+                    case ADD:
+                        System.out.println("[CREATED] " + update.newPath());
+                        break;
+                    case MODIFY:
+                        System.out.println("[MODIFIED] " + update.newPath());
+                        break;
+                    case DELETE:
+                        System.out.println("[DELETED] " + update.oldPath());
+                        break;
+                    case RENAME:
+                        System.out.println("[RENAMED] " + update.oldPath() + " -> " + update.newPath());
+                        break;
+                }
             }
         });
         
@@ -55,7 +53,7 @@ public class Demo {
         }
         
         // Stop monitoring
-        FastFileWatch.stop();
+        service.stop();
         System.out.println("Monitoring stopped");
     }
 }

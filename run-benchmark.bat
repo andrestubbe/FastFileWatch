@@ -5,10 +5,12 @@ echo Building FastFileWatch...
 call mvn clean package -f pom.xml
 echo.
 echo Building Benchmark...
-call mvn clean compile -f examples\Benchmark\pom.xml
+cd examples\Benchmark
+call mvn clean package -f pom.xml
 echo.
 echo Running Benchmark...
-java --enable-native-access=ALL-UNNAMED -cp "examples\Benchmark\target\classes;target\fastfilewatch-v1.0.0.jar" fastfilewatch.Benchmark
+java --enable-native-access=ALL-UNNAMED -cp "target\fastfilewatch-benchmark-v1.0.0.jar;..\..\target\fastfilewatch-v1.0.0.jar" fastfilewatch.Benchmark
+cd ..\..
 echo.
 echo === Benchmark Complete ===
 pause

@@ -5,24 +5,24 @@ import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Benchmark - Compares FastFileWatch to Java's file monitoring.
+ * Benchmark - Compares WatchService to Java's file monitoring.
  */
 public class Benchmark {
     
     public static void main(String[] args) {
-        System.out.println("=== FastFileWatch Benchmark ===");
-        System.out.println("Comparing FastFileWatch to Java's file monitoring");
+        System.out.println("=== WatchService Benchmark ===");
+        System.out.println("Comparing WatchService to Java's file monitoring");
         System.out.println();
         
-        // Note: FastFileWatch requires USN Journal to be enabled
-        System.out.println("Note: FastFileWatch requires USN Journal to be enabled on the volume.");
+        // Note: WatchService requires USN Journal to be enabled
+        System.out.println("Note: WatchService requires USN Journal to be enabled on the volume.");
         System.out.println("Enable with: fsutil usn createjournal C: 64000 4096");
         System.out.println();
         
         // Check USN Journal availability
-        boolean usnAvailable = fastfilewatch.FastFileWatch.isUSNJournalAvailable();
+        boolean usnAvailable = WatchService.isUSNAvailable("C:");
         System.out.println("USN Journal Available: " + usnAvailable);
-        System.out.println("Status: " + fastfilewatch.FastFileWatch.getUSNJournalStatus());
+        System.out.println("Status: " + WatchService.usnStatus("C:"));
         System.out.println();
         
         if (!usnAvailable) {
@@ -35,14 +35,17 @@ public class Benchmark {
         long javaTime = benchmarkJavaMonitoring();
         System.out.println("Java Monitoring Time: " + javaTime + " ms");
         
-        // Benchmark FastFileWatch
-        long fastWatchTime = benchmarkFastFileWatch();
-        System.out.println("FastFileWatch Time: " + fastWatchTime + " ms");
+        // Benchmark WatchService
+        long fastWatchTime = benchmarkWatchService();
+        System.out.println("WatchService Time: " + fastWatchTime + " ms");
         
         System.out.println();
         double speedup = (double) javaTime / fastWatchTime;
         System.out.println("Speedup: " + String.format("%.2f", speedup) + "x");
         
+        System.out.println();
+        System.out.println("Note: WatchService currently uses Java stub implementation.");
+        System.out.println("Native implementation with USN Journal will provide significant performance improvements.");
         System.out.println();
         System.out.println("=== Benchmark Complete ===");
     }
@@ -62,11 +65,11 @@ public class Benchmark {
         return endTime - startTime;
     }
     
-    private static long benchmarkFastFileWatch() {
-        System.out.println("Running FastFileWatch...");
+    private static long benchmarkWatchService() {
+        System.out.println("Running WatchService (Java stub)...");
         long startTime = System.currentTimeMillis();
         
-        // FastFileWatch would run continuously
+        // WatchService would run continuously
         // For benchmark, we simulate 10 seconds of monitoring
         try {
             TimeUnit.SECONDS.sleep(10);

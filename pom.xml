@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.andrestubbe</groupId>
     <artifactId>fastfilewatch</artifactId>
-    <version>v1.0.0</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>FastFileWatch</name>
@@ -45,7 +45,12 @@
         <dependency>
             <groupId>com.github.andrestubbe</groupId>
             <artifactId>fastcore</artifactId>
-            <version>v1.0.0</version>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>fastfilesearch</artifactId>
+            <version>0.1.0</version>
         </dependency>
     </dependencies>
 
@@ -80,7 +85,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>fastfilewatch.FastFileWatch</mainClass>
+                            <mainClass>fastfilewatch.WatchService</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
