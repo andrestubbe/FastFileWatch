@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
 [![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)](https://jitpack.io/#andrestubbe)
 
-**A zero-latency file system monitoring module for the FastJava ecosystem. Real-time events for file creation,
+**⚡ A zero-latency file system monitoring module for the FastJava ecosystem. Real-time events for file creation,
 modification, and deletion via ReadDirectoryChangesW.**
 
 **FastFileWatch** provides instant notification of file system changes. By using direct Win32 API hooks, it eliminates
@@ -92,9 +92,20 @@ Download the latest JARs directly to add them to your classpath:
 > [!IMPORTANT]
 > All JARs must be in your classpath for the native JNI calls to function correctly.
 
+---
+
 ## License
 
-MIT License — See [LICENSE](LICENSE) for details.
+MIT License — See [LICENSE](LICENSE) file for details.
 
 ---
-**Part of the FastJava Ecosystem** — *Making the JVM faster.*
+
+## Related Projects
+
+- [FastFileIndex](https://github.com/andrestubbe/FastFileIndex) — Ultra-fast filesystem scanner
+- [FastTheme](https://github.com/andrestubbe/FastTheme) — High-performance native window styling
+- [FastThumb](https://github.com/andrestubbe/FastThumb) — Native Shell Image Engine
+
+---
+
+**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
