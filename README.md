@@ -1,4 +1,4 @@
-﻿# FastFileWatch v0.1.0 [ALPHA] — High-Performance Native File Monitoring for Java
+# FastFileWatch v0.1.0 [ALPHA] � High-Performance Native File Monitoring for Java
 
 [![Status](https://img.shields.io/badge/status-v0.1.0-brightgreen.svg)](https://github.com/andrestubbe/FastFileWatch/releases/tag/v0.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,13 +8,13 @@
 
 ---
 
-**⚡ A zero-latency file system monitoring module for the FastJava ecosystem. Real-time events for file creation,
+**? A zero-latency file system monitoring module for the FastJava ecosystem. Real-time events for file creation,
 modification, and deletion via ReadDirectoryChangesW.**
 
 **FastFileWatch** provides instant notification of file system changes. By using direct Win32 API hooks, it eliminates
 the polling and latency associated with standard Java WatchService.
 
-> **5–12× faster than Java's Float.parseFloat / Double.parseDouble.** Zero-GC. SIMD-accelerated. Ryu-powered formatting.
+> **5�12� faster than Java's Float.parseFloat / Double.parseDouble.** Zero-GC. SIMD-accelerated. Ryu-powered formatting.
 > JSON/CSV/telemetry parsing without garbage collection overhead.
 
 
@@ -34,10 +34,10 @@ the polling and latency associated with standard Java WatchService.
 
 ## Features
 
-- **⚡ Instant Events**: Real-time notification via native Windows hooks.
-- **🔎 Low Overhead**: Efficient monitoring without periodic polling.
-- **📦 Recursive Support**: High-performance monitoring of entire directory trees.
-- **🚀 Raw Speed**: Built for real-time indexing and automation tools.
+- **? Instant Events**: Real-time notification via native Windows hooks.
+- **?? Low Overhead**: Efficient monitoring without periodic polling.
+- **?? Recursive Support**: High-performance monitoring of entire directory trees.
+- **?? Raw Speed**: Built for real-time indexing and automation tools.
 
 ---
 
@@ -84,10 +84,10 @@ dependencies {
 
 Download the latest JARs directly to add them to your classpath:
 
-1. 📦 *
+1. ?? *
    *[fastfilewatch-v0.1.0.jar](https://github.com/andrestubbe/FastFileWatch/releases/download/v0.1.0/fastfilewatch-v0.1.0.jar)
    ** (The Core Library)
-2. ⚙️ **[fastcore-v0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/v0.1.0/fastcore-v0.1.0.jar)** (
+2. ?? **[fastcore-v0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/v0.1.0/fastcore-v0.1.0.jar)** (
    The Mandatory Native Loader)
 
 ---
@@ -96,7 +96,7 @@ Download the latest JARs directly to add them to your classpath:
 
 * **[COMPILE.md](docs/COMPILE.md)**: Full compilation guide (MSVC C++17 build chain + JNI Setup).
 * **[REFERENCE.md](docs/REFERENCE.md)**: Full API descriptions, border configurations, and codepoint index.
-* **[PHILOSOPHIE.md](docs/PHILOSOPHIE.md)**: The engineering rationale for zero-allocation performance.
+* **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: The engineering rationale for zero-allocation performance.
 * **[ROADMAP.md](docs/ROADMAP.md)**: Future milestones and planned features.
 
 ---
@@ -105,24 +105,24 @@ Download the latest JARs directly to add them to your classpath:
 
 | Platform      | Status            |
 |---------------|-------------------|
-| Windows 10/11 | ✅ Fully Supported |
-| Linux         | 🚧 Planned        |
-| macOS         | 🚧 Planned        |
+| Windows 10/11 | ? Fully Supported |
+| Linux         | ?? Planned        |
+| macOS         | ?? Planned        |
 
 ---
 
 ## License
 
-MIT License — See [LICENSE](LICENSE) file for details.
+MIT License � See [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Related Projects
 
-- [FastFileIndex](https://github.com/andrestubbe/FastFileIndex) — Ultra-fast filesystem scanner
-- [FastTheme](https://github.com/andrestubbe/FastTheme) — High-performance native window styling
-- [FastThumb](https://github.com/andrestubbe/FastThumb) — Native Shell Image Engine
+- [FastFileIndex](https://github.com/andrestubbe/FastFileIndex) � Ultra-fast filesystem scanner
+- [FastTheme](https://github.com/andrestubbe/FastTheme) � High-performance native window styling
+- [FastThumb](https://github.com/andrestubbe/FastThumb) � Native Shell Image Engine
 
 ---
 
-**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. 🚀📋*
+**Part of the FastJava Ecosystem** � *Making the JVM faster. Small package. Maximum speed. Zero bloat. ????*
