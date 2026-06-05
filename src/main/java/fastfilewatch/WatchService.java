@@ -28,15 +28,6 @@ import fastfilesearch.FileUpdate;
  * @version 1.0.0
  */
 public final class WatchService {
-    static {
-        try {
-            fastcore.FastCore.loadLibrary("fastfilewatch");
-        } catch (Throwable e) {
-            System.err.println("CRITICAL: FastCore failed to load native DLL: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     private final long nativeHandle;
 
     private WatchService(long nativeHandle) {
@@ -50,22 +41,31 @@ public final class WatchService {
     /**
      * Check if USN Journal is available for volume.
      */
-    public static native boolean isUSNAvailable(String volume);
+    public static boolean isUSNAvailable(String volume) {
+        return FastFileWatch.isUSNAvailable();
+    }
 
     /**
      * Get USN Journal status for volume.
      */
-    public static native String usnStatus(String volume);
+    public static String usnStatus(String volume) {
+        return FastFileWatch.getUSNJournalStatus();
+    }
 
     /**
      * Start watching roots with callback.
      */
-    public static native WatchService start(String[] roots, WatchCallback callback);
+    public static WatchService start(String[] roots, WatchCallback callback) {
+        FastFileWatch.start(roots, new FastFileWatch.NativeCallback(callback));
+        return new WatchService(1); // Dummy handle since native start returns void
+    }
 
     /**
      * Stop watching.
      */
-    public native void stop();
+    public void stop() {
+        FastFileWatch.stop();
+    }
 
     public static void main(String[] args) {
         System.out.println("=== WatchService ===");
