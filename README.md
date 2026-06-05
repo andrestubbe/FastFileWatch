@@ -1,4 +1,4 @@
-# FastFileWatch v0.1.0 [ALPHA] — High-Performance Native File Monitoring for Java
+ï»¿# FastFileWatch v0.1.0 [ALPHA] ï¿½ High-Performance Native File Monitoring for Java
 
 [![Status](https://img.shields.io/badge/status-v0.1.0-brightgreen.svg)](https://github.com/andrestubbe/FastFileWatch/releases/tag/v0.1.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -14,13 +14,13 @@ modification, and deletion via ReadDirectoryChangesW.**
 **FastFileWatch** provides instant notification of file system changes. By using direct Win32 API hooks, it eliminates
 the polling and latency associated with standard Java WatchService.
 
-> **5–12× faster than Java's Float.parseFloat / Double.parseDouble.** Zero-GC. SIMD-accelerated. Ryu-powered formatting.
+> **5ï¿½12ï¿½ faster than Java's Float.parseFloat / Double.parseDouble.** Zero-GC. SIMD-accelerated. Ryu-powered formatting.
 > JSON/CSV/telemetry parsing without garbage collection overhead.
 
 
 ---
 
-[![FastKeyboard Showcase](docs/screenshot.png)](https://www.youtube.com/watch?v=BZsqQl7WqWk)
+[![FastFileWatch Showcase](docs/screenshot.png)](https://www.youtube.com/watch?v=BZsqQl7WqWk)
 
 ---
 
@@ -57,13 +57,13 @@ Add the JitPack repository and the dependencies to your `pom.xml`:
 <dependencies>
    <dependency>
        <groupId>com.github.andrestubbe</groupId>
-       <artifactId>fastfilewatch</artifactId>
-       <version>v0.1.0</version>
+       <artifactId>FastFileWatch</artifactId>
+       <version>0.1.0</version>
    </dependency>
    <dependency>
        <groupId>com.github.andrestubbe</groupId>
        <artifactId>fastcore</artifactId>
-       <version>v0.1.0</version>
+       <version>0.1.0</version>
    </dependency>
 </dependencies>
 ```
@@ -75,8 +75,8 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.andrestubbe:fastfilewatch:v0.1.0'
-    implementation 'com.github.andrestubbe:fastcore:v0.1.0'
+    implementation 'com.github.andrestubbe:FastFileWatch:0.1.0'
+    implementation 'com.github.andrestubbe:FastCore:0.1.0'
 }
 ```
 
@@ -85,9 +85,9 @@ dependencies {
 Download the latest JARs directly to add them to your classpath:
 
 1. ?? *
-   *[fastfilewatch-v0.1.0.jar](https://github.com/andrestubbe/FastFileWatch/releases/download/v0.1.0/fastfilewatch-v0.1.0.jar)
+   *[fastfilewatch-0.1.0.jar](https://github.com/andrestubbe/FastFileWatch/releases/download/0.1.0/fastfilewatch-0.1.0.jar)
    ** (The Core Library)
-2. ?? **[fastcore-v0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/v0.1.0/fastcore-v0.1.0.jar)** (
+2. ?? **[fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar)** (
    The Mandatory Native Loader)
 
 ---
@@ -113,16 +113,17 @@ Download the latest JARs directly to add them to your classpath:
 
 ## License
 
-MIT License — See [LICENSE](LICENSE) file for details.
+MIT License ï¿½ See [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Related Projects
 
-- [FastFileIndex](https://github.com/andrestubbe/FastFileIndex) — Ultra-fast filesystem scanner
-- [FastTheme](https://github.com/andrestubbe/FastTheme) — High-performance native window styling
-- [FastThumb](https://github.com/andrestubbe/FastThumb) — Native Shell Image Engine
+- [FastFileIndex](https://github.com/andrestubbe/FastFileIndex) ï¿½ Ultra-fast filesystem scanner
+- [FastTheme](https://github.com/andrestubbe/FastTheme) ï¿½ High-performance native window styling
+- [FastThumb](https://github.com/andrestubbe/FastThumb) ï¿½ Native Shell Image Engine
 
 ---
 
-**Part of the FastJava Ecosystem** — *Making the JVM faster. Small package. Maximum speed. Zero bloat. ????*
+**Part of the FastJava Ecosystem** ï¿½ *Making the JVM faster. Small package. Maximum speed. Zero bloat. ????*
+

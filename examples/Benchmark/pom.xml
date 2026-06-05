@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
@@ -7,7 +7,7 @@
 
     <groupId>com.github.andrestubbe</groupId>
             <artifactId>fastfilewatch-benchmark</artifactId>
-            <version>0.1.0</version>
+            <version>v0.1.0</version>
     <packaging>jar</packaging>
 
     <name>FastFileWatch Benchmark</name>
@@ -29,13 +29,13 @@
     <dependencies>
         <dependency>
             <groupId>com.github.andrestubbe</groupId>
-            <artifactId>fastcore</artifactId>
-            <version>0.1.0</version>
+            <artifactId>FastCore</artifactId>
+            <version>v0.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.andrestubbe</groupId>
-            <artifactId>fastfilewatch</artifactId>
-            <version>0.1.0</version>
+            <artifactId>FastFileWatch</artifactId>
+            <version>v0.1.0</version>
             <systemPath>${project.basedir}/../../target/fastfilewatch-v1.0.0.jar</systemPath>
             <scope>system</scope>
         </dependency>
