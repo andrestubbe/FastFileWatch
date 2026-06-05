@@ -30,16 +30,10 @@ import fastfilesearch.FileUpdate;
 public final class WatchService {
     static {
         try {
-            System.loadLibrary("fastcore");
-        } catch (UnsatisfiedLinkError e1) {
-            try {
-                String userDir = System.getProperty("user.dir");
-                String dllPath = userDir + "\\build\\fastcore.dll";
-                System.load(dllPath);
-            } catch (UnsatisfiedLinkError e2) {
-                System.err.println("Failed to load fastcore.dll: " + e2.getMessage());
-                throw e2;
-            }
+            fastcore.FastCore.loadLibrary("fastfilewatch");
+        } catch (Throwable e) {
+            System.err.println("CRITICAL: FastCore failed to load native DLL: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
