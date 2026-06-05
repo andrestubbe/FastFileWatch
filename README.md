@@ -14,9 +14,6 @@ modification, and deletion via ReadDirectoryChangesW.**
 **FastFileWatch** provides instant notification of file system changes. By using direct Win32 API hooks, it eliminates
 the polling and latency associated with standard Java WatchService.
 
-> **5�12� faster than Java's Float.parseFloat / Double.parseDouble.** Zero-GC. SIMD-accelerated. Ryu-powered formatting.
-> JSON/CSV/telemetry parsing without garbage collection overhead.
-
 
 ---
 
@@ -126,4 +123,5 @@ MIT License � See [LICENSE](LICENSE) file for details.
 ---
 
 **Part of the FastJava Ecosystem** � *Making the JVM faster. Small package. Maximum speed. Zero bloat. ????*
+
 
