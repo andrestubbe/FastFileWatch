@@ -42,7 +42,7 @@ public final class WatchService {
      * Check if USN Journal is available for volume.
      */
     public static boolean isUSNAvailable(String volume) {
-        return FastFileWatch.isUSNAvailable();
+        return FastFileWatch.isUSNJournalAvailable();
     }
 
     /**
