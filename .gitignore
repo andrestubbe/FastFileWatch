@@ -10,7 +10,7 @@ build/
 *.idx.paths
 
 # Root-level build artifacts (should be in build/ directory)
-/fastfilewatch.dll
+# /fastfilewatch.dll
 /fastfilewatch.obj
 
 # IDE
