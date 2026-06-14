@@ -29,9 +29,9 @@
 ## Features
 
 - **⚡ Instant Events**: Real-time notification via native Windows hooks.
-- **🚀 Low Overhead**: Efficient monitoring without periodic polling.
-- **🚀 Recursive Support**: High-performance monitoring of entire directory trees.
-- **🚀 Raw Speed**: Built for real-time indexing and automation tools.
+- **⏱️ Low Overhead**: Efficient monitoring without periodic polling.
+- **📂 Recursive Support**: High-performance monitoring of entire directory trees.
+- **🔍 Raw Speed**: Built for real-time indexing and automation tools.
 
 ---
 
@@ -78,8 +78,8 @@ dependencies {
 
 Download the latest JARs directly to add them to your classpath:
 
-1. 🚀 **[fastfilewatch-0.1.0.jar](https://github.com/andrestubbe/FastFileWatch/releases/download/0.1.0/fastfilewatch-0.1.0.jar)** (The Core Library)
-2. 🚀 **[fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar)** (The Mandatory Native Loader)
+1. 📦 **[fastfilewatch-0.1.0.jar](https://github.com/andrestubbe/FastFileWatch/releases/download/0.1.0/fastfilewatch-0.1.0.jar)** (The Core Library)
+2. ⚙️ **[fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar)** (The Mandatory Native Loader)
 
 ---
 
@@ -97,8 +97,8 @@ Download the latest JARs directly to add them to your classpath:
 | Platform      | Status            |
 |---------------|-------------------|
 | Windows 10/11 | ✅ Fully Supported |
-| Linux         | 🚧 Planned        |
-| macOS         | 🚧 Planned        |
+| Linux         | 🔗 Planned        |
+| macOS         | 🔗 Planned        |
 
 ---
 
