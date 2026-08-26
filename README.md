@@ -14,7 +14,28 @@
 
 ---
 
-[![FastFileWatch Showcase](docs/screenshot.png)](https://www.youtube.com/watch?v=BZsqQl7WqWk)
+## Quick Start
+
+```java
+import fastfilewatch.WatchService;
+import fastfilewatch.WatchCallback;
+import fastfilesearch.FileUpdate;
+
+public class Demo {
+    public static void main(String[] args) {
+        // Start zero-latency native file-system monitoring
+        String[] roots = { "C:\\" };
+        WatchService service = WatchService.start(roots, new WatchCallback() {
+            @Override
+            public void onUpdate(FileUpdate update) {
+                System.out.printf("[%s] %s\n", update.type(), update.newPath());
+            }
+        });
+
+        System.out.println("Monitoring active. Press CTRL+C to stop.");
+    }
+}
+```
 
 ---
 
